@@ -1,0 +1,3 @@
+WildFireData found on: found on: https://www.kaggle.com/datasets/behroozsohrabi/us-wildfire-records-6th-edition/data.
+Dataset has: 1048575 lines
+Contain data for wildfires that occurred in the United States from 1992 to 2020
