@@ -1,0 +1,120 @@
+---
+title: "Diamonds Project"
+author: "Tilak Muley"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Background and data chosen
+The data that was chosen was diamonds. This data set comes built in-the 
+tidyverse package.The data diamonds has variables: carat, cut, color, clarity, 
+depth, table, price, x, y, and z. The variable carat depends on what weight the 
+diamond is in this data set the carat ranges from .20-5.01. The variable cut 
+identifies what cut quality the diamond is in ranging from ideal, premium, good,
+very good and fair. The variable clarity identifies how clear the diamond is. The
+variable depth identifies the depth percentage of the diamond which in this data 
+set it ranges from 43.0-79.0. The variable price identifies the price of the 
+diamonds in U.S. dollars in this data set the prices ranges from $326-$18823. 
+The variable x identifies the length in mm in this data set it ranges from 
+0mm–10.74mm. The variable y identifies width in mm which in this data set ranges 
+from 0mm–58.9mm. The variable z identifies depth in mm which in this data set 
+ranges from 0mm–31.8mm.
+
+
+## Problem definition
+The problem I decided to choose to solve is to find out if there is any 
+difference or if its similar on price and carat depending on what type of cut
+the diamond has (ideal, premium, good, very good and fair) 
+
+## Importing Data and Library
+```{r }
+library(dplyr) 
+library(knitr)
+library(ggplot2)
+library(data.table)
+library(tidyr)
+library(tidyverse)
+
+data("diamonds")
+
+```
+## EXPLATORY DATA ANALYSIS 
+## Summary of Data
+Summary:
+```{r }
+summary(diamonds)
+```
+
+## Data Exploration of diamonds data
+First 6 rows of the input data frame:
+```{r}
+head(diamonds)
+```
+Last 6 rows of the input data frame:
+```{r}
+tail(diamonds)
+```
+Dimensions of the data:
+```{r}
+dim(diamonds)
+```
+## DATA MANIPULATION
+## Data wrangling, munging and cleaning
+To Data wrangle and clean up the data I first used the select() command to get 
+only the data of the variables I want for my problem. The variables I wanted was 
+cut, carat and price. So I created a new data set called diamondWanted. 
+```{r }
+diamondWanted = select(diamonds, cut,carat,price)
+```
+Then I arrange the data set by type of cut so all data for fair together, good 
+is together, very good together, premium together, and ideal together
+```{r}
+diamondWanted = diamondWanted %>% arrange(cut)
+diamondWanted
+```
+
+## Data Exploration of diamondWanted Data 
+First 6 rows of the input Data frame with just variables cut, carat, price:
+```{r}
+head(diamondWanted)
+```
+Last 6 rows of the input Data frame with just variables cut, carat, price:
+```{r}
+tail(diamondWanted)
+```
+
+## Data Visualization
+Scatter plot:
+```{r }
+ggplot(data = diamondWanted, aes(x = price, y = carat, color = cut)) + 
+  geom_point()
+```
+Box plot of cut and price:
+```{r}
+ggplot(data = diamondWanted,aes(x = cut, y = price))+geom_boxplot(fill="purple")
+```
+Box plot of cut and carat:
+```{r}
+ggplot(data = diamondWanted,aes(x = cut, y = carat))+geom_boxplot(fill="orange")
+```
+
+## Conclusion
+In conclusion I found that it isn't that much of difference of carat and price 
+depending on the type of cut. Also that the main thing is the carat of the 
+diamond not the type of cut that affects the price. Overall I found out the cut 
+of the diamond doesn't have much of a impact on the carat or the price of the 
+diamond. But I did find that ideal cut is much more spread out along the price 
+but the carat of any ideal cut diamond does not exist above 3.5. Also learned 
+and found the carat medians of each cut is similar. Also price medians of each 
+cut is similar to each type of cut. While max and min was fairly close in price 
+between all types of cuts big difference was between max of carat between each
+type of cut with fair cut having a bigger max and good cut having the smaller 
+max. It was also found the smallest carat belongs to a very good cut diamond 
+with a price of $367. While biggest carat belongs to a fair cut diamond with a 
+price of $18018. While lowest price on a diamond is $326 on a ideal cut .23 
+carat and a premium cut .21 carat. While highest price on diamond is $18823 on a 
+premium cut 2.29 carat diamond.
+
