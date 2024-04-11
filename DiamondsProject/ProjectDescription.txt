@@ -1,0 +1,5 @@
+The point of this project was to try and find out if there is any difference or similarity on price and carat depending on what type of cut the diamond has. The data for this project was called diamonds which was found in the tidyverse package. This data has diamond related data such as carat, color, clarity, depth, price, and more.
+
+Some things done in this project was exploratory data analysis so I got a summary of the data to try and help find the mean, median, and max of all the variables. Then for some data manipulation because only the price, carat and cut were needed I cleaned up the data by only including those variables and removing the others I did not need. Also, rather than modifying the original data a new dataset was created with just those three variables. Some data visualization took place in the form of a scatterplot to help visualize price, carat and cut. Also, two box plots were made one for cut and price and another for cut and carat. 
+
+In the end it was found there is not a difference of carat and price on the type of cut. Also it was found and something that is obvious is that carat and not cut affects the price of an diamond the most. 
